@@ -1,5 +1,5 @@
 ---
-title: Welcome 👋🏼
+title: Docker Deploy API
 description: Get started building your docs site with Starlight.
 template: splash
 hero:
@@ -7,20 +7,23 @@ hero:
   image:
     file: ../../assets/spouting_whale_flat.svg
   actions:
-    - text: Get Started
-      link: /guides/example/
+    - text: Getting Started
+      link: /getting-started/intro
       icon: right-arrow
       variant: primary
     - text: Source Code on GitHub
       link: https://github.com/timokoessler/docker-deploy-api
       icon: external
+editUrl: false
+lastUpdated: false
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
+	<Card title="Introduction" icon="information">
+		What is Docker Deploy API and how does it work?<br />
+		<a href="/getting-started/intro">Read the intro</a>
 	</Card>
 	<Card title="Add new content" icon="add-document">
 		Add Markdown or MDX files to `src/content/docs` to create new pages.
@@ -32,3 +35,11 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 		Learn more in [the Starlight Docs](https://starlight.astro.build/).
 	</Card>
 </CardGrid>
+
+<div class="legal">Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries.
+Docker, Inc. and other parties may also have trademark rights in other terms used herein.
+The whale logo is licensed under the MIT license - © Microsoft Corporation (fluentui-emoji).</div>
+
+<div class="footer">
+	Copyright © Timo Kössler - Build with 🌟 <a href="https://starlight.astro.build" class="decent" target="_blank" rel="noopener noreferrer">Starlight from Astro</a>
+</div>

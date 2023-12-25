@@ -1,0 +1,76 @@
+---
+title: Reverse Proxy
+sidebar:
+  order: 3
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+The application is designed to be used behind a reverse proxy like nginx, traefik or apache2, that handles the tls termination and proxies the requests to the application.
+This page contains some example configurations for popular reverse proxies.
+
+## Example configurations
+
+<Tabs>
+<TabItem label="nginx">
+
+:::tip
+For an easy configuration of nginx you can use the website <a href="https://nginxconfig.io/" target="_blank" rel="noopener noreferrer">nginxconfig.io</a>.
+:::
+
+The following example configuration assumes that the application is running on `127.0.0.1:8080` and the reverse proxy is running on port `443`.
+It also assumes that you already have a valid ssl certificate and key for your domain.
+
+```nginx title="deploy.example.com.conf"
+# HTTPS
+server {
+    listen              443 ssl;
+    listen              [::]:443 ssl;
+    server_name         deploy.example.com;
+    http2               on;
+
+    # SSL
+    ssl_certificate     /opt/ssl/wc_example_com_cert.pem;
+    ssl_certificate_key /opt/ssl/wc_example_com_key.pem;
+
+    # security headers
+    add_header X-XSS-Protection          "1; mode=block" always;
+    add_header X-Content-Type-Options    "nosniff" always;
+    add_header Referrer-Policy           "no-referrer-when-downgrade" always;
+    add_header Content-Security-Policy   "default-src 'self' http: https: ws: wss: data: blob: 'unsafe-inline'; frame-ancestors 'self';" always;
+    add_header Permissions-Policy        "interest-cohort=()" always;
+    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+
+    # reverse proxy
+    location / {
+        proxy_pass            http://127.0.0.1:8080;
+        proxy_set_header Host $host;
+        proxy_http_version                 1.1;
+        proxy_cache_bypass                 $http_upgrade;
+        # Proxy SSL
+        proxy_ssl_server_name              on;
+        # Proxy headers
+        proxy_set_header Upgrade           $http_upgrade;
+        proxy_set_header Connection        $connection_upgrade;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header Forwarded         $proxy_add_forwarded;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host  $host;
+        proxy_set_header X-Forwarded-Port  $server_port;
+        # Proxy timeouts
+        proxy_connect_timeout              60s;
+        proxy_send_timeout                 60s;
+        proxy_read_timeout                 60s;
+    }
+}
+
+# HTTP redirect
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name deploy.example.com;
+    return      301 https://deploy.example.com$request_uri;
+}
+```
+</TabItem>
+</Tabs>

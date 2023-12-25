@@ -11,6 +11,9 @@
 	--sl-color-gray-5: #353841;
 	--sl-color-gray-6: #24272f;
 	--sl-color-black: #17181c;
+	--overlay-blurple: rgba(50, 161, 234, 0.2);
+	--ec-brdRad: 0.5rem;
+	--ec-frm-edTabBrdRad: 0.5rem;
 }
 /* Light mode colors. */
 :root[data-theme='light'] {
@@ -26,15 +29,51 @@
 	--sl-color-gray-6: #eceef2;
 	--sl-color-gray-7: #f5f6f8;
 	--sl-color-black: #ffffff;
+	--overlay-blurple: rgba(50, 161, 234, 0.2);
+	--ec-brdRad: 0.5rem;
+	--ec-frm-edTabBrdRad: 0.5rem;
 }
 
-.astro-code,
 .starlight-aside,
 .card {
     border-radius: 0.5rem;
 }
 
 article.card {
-    border-radius: 16px;
-    
+    border-radius: 0.5rem;
+    box-shadow: var(--sl-shadow-md);
+	border: 1px solid var(--sl-color-gray-5);
+}
+
+.legal {
+	margin-top: 3rem !important;
+	font-size: 12px;
+}
+
+.footer {
+	font-size: 14px;
+}
+
+a.decent {
+	color: var(--sl-color-white) !important;
+	text-decoration: none !important;
+}
+
+a.decent:hover {
+	color: var(--sl-color-accent) !important;
+}
+
+[data-has-hero] .page {
+	background:
+		linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
+		radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
+		radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) /
+			60rem 30rem;
+}
+
+[data-has-hero] header {
+	border-bottom: 1px solid transparent;
+	background-color: transparent;
+	-webkit-backdrop-filter: blur(16px);
+	backdrop-filter: blur(16px);
 }

@@ -1,0 +1,74 @@
+---
+title: Installation
+sidebar:
+  order: 2
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+This page will guide you through the installation process of this application.
+
+:::note[Requirements]
+The following instructions assume that you have already installed Docker and Docker Compose on your server.
+If not, please refer to the <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener noreferrer">official documentation</a> for more information.
+:::
+
+## Get docker-compose.yml
+
+First, create a new directory for the application and download the latest `docker-compose.yml` file from the repository.
+
+<Tabs>
+  <TabItem label="curl">
+    ```bash title="Download docker-compose.yml" frame="terminal"
+    curl https://raw.githubusercontent.com/timokoessler/docker-deploy-api/main/docker-compose.yml --output docker-compose.yml
+    ```
+  </TabItem>
+  <TabItem label="wget">
+    ```bash title="Download docker-compose.yml" frame="terminal"
+    wget https://raw.githubusercontent.com/timokoessler/docker-deploy-api/main/docker-compose.yml
+    ```  
+  </TabItem>
+</Tabs>
+
+## Configure the application
+
+Open the `docker-compose.yml` file in your favorite editor and adjust the following settings:
+
+```diff lang="yaml"
+...
+    ports:
+        # Always use a reverse proxy like nginx to proxy the requests to this container
+-        - '127.0.0.1:8080:3000'
++        - '127.0.0.1:8081:3000' # Change to a non public unused port
+    environment:
+-       - URL=http://127.0.0.1:8080 # Public url of the api
++       - URL=https://deploy.example.com # Your public url
+        - PORT=3000 # The port the api is listening on (inside the container)
+...
+```
+
+Change the `URL` to the public url of your application and modify the `ports` setting to a non public port that is not used by another application on your server.
+You can also use Docker networks to communicate with the container from other containers.
+
+:::tip
+You can find all available configuration options on the configuration page.
+:::
+
+## Configure the reverse proxy
+
+The application is designed to be used behind a reverse proxy like nginx, that handles the tls termination and proxies the requests to the application.
+You can find example proxy configurations on the page [Reverse Proxy](/getting-started/reverse-proxy).
+
+## Start the application
+
+Finally, start the application with the following command:
+```bash frame="terminal"
+docker compose up -d
+```
+
+Make sure the container is not restarting and check the logs for any errors:
+```bash frame="terminal"
+docker compose logs -f
+```
+
+If you open the url of your application in your browser, you should see a welcome page.
+Congratulations, you have successfully installed the application! 🎉

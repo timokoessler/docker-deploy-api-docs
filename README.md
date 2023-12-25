@@ -2,7 +2,7 @@
 
 Documentation for the [Docker Deploy API](https://github.com/timokoessler/docker-deploy-api), an easy-to-use API for deploying Docker containers to a server.
 
-Work in progress.
+Work in progress. Build with Astro Starlight 🌟.
 
 ## Contact
 
