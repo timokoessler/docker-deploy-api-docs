@@ -1,0 +1,16 @@
+---
+title: Configuration
+---
+
+The following table lists all available configuration options. All options are optional and are passed to the application as **environment variables**.
+You can easily set them in the `docker-compose.yml` file.
+
+| Variable | Default Value | Description |
+| --- | --- | --- |
+| `URL` | `http://localhost:3000` | The public URL of the application, used for generating absolute URLs. |
+| `SENTRY_DSN` | ` ` | The DSN of the Sentry instance to use for error reporting. |
+| `DISABLE_INDEX_PAGE` | `false` | Whether to disable the index page. |
+| `WORKERS` | `1` | The number of worker processes to spawn. |
+| `PORT` | `3000` | The port the application should listen on inside the container. |
+| `BEHIND_PROXY` | `true` | Whether the application is running behind a reverse proxy. Relevant for determining the client's IP address. |
+| `IP` | `0.0.0.0` | The IP address the application should listen on inside the container. |

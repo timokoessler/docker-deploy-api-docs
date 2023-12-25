@@ -22,6 +22,17 @@ export default defineConfig({
 					label: 'Getting Started',
 					autogenerate: { directory: 'getting-started' },
 				},
+				{
+					label: 'Usage',
+					items: [
+						{ label: 'CI/CD', autogenerate: { directory: 'usage/ci-cd' } },
+						{ label: 'Generic', autogenerate: { directory: 'usage/generic' } },
+					]
+				},
+				{
+					label: 'Advanced',
+					autogenerate: { directory: 'advanced' },
+				},
 			],
 			lastUpdated: true,
             editLink: {

@@ -1,0 +1,47 @@
+---
+title: HTTP
+---
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+The deployment is always triggered by a HTTP request. You can use any HTTP client to trigger the deployment.
+
+You need to send a **POST** request to `/v1/deploy` with the header `X-Deploy-Token`.
+
+:::caution[Important]
+Make sure to increase the request timeout, as the deployment can take a while.
+:::
+
+## Examples
+
+<Tabs>
+<TabItem label="cURL">
+```bash "YourToken" "deploy.example.com"
+curl -X POST -m 300 -H "X-Deploy-Token: YourToken" https://deploy.example.com/v1/deploy
+```
+</TabItem>
+<TabItem label="HTTP Request String">
+```http "YourToken" "deploy.example.com"
+POST /v1/deploy HTTP/1.1
+X-Deploy-Token: YourToken
+Host: deploy.example.com
+```
+</TabItem>
+<TabItem label="Fetch (JS)">
+```js "YourToken" "deploy.example.com"
+const request = await fetch('https://deploy.example.com/v1/deploy', {
+   method: 'POST',
+   headers: {
+     'X-Deploy-Token': 'YourToken'
+   }
+});
+const response = await request.text();
+if(!response.ok){
+    console.error(`Deployment failed: ${response}`);
+} else {
+    console.info(`Deployment successful: ${response}`);
+}
+```
+</TabItem>
+
+
+</Tabs>

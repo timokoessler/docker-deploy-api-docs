@@ -1,0 +1,86 @@
+---
+title: GitHub Actions
+---
+
+You can use GitHub Actions to automate the deployment of Docker containers with Docker Deploy API.
+
+:::note[Requirements]
+The following instructions assume that you have already generated a [Deploy Token](/getting-started/token).
+:::
+
+## Save Secret
+
+First, you need to save the Deploy Token as a secret in your repository.
+You need to be a collaborator or owner of the repository to do this.
+
+1. Go to your repository on GitHub.
+2. Click **Settings**.
+3. Click **Secrets > Actions**.
+4. Click on **New repository secret**.
+5. Enter `DEPLOY_TOKEN` as the name and paste the Deploy Token as the value.
+6. Click **Add secret**.
+
+## Edit Workflow
+
+Edit your workflow file (e.g. `.github/workflows/deploy.yml`) and add the following content:
+
+```yaml "\"https://deploy.example.com/s\""
+steps:
+  - name: Deploy 🚀
+    run: curl -sSL "https://deploy.example.com/s" | bash -s -- "${{ secrets.DEPLOY_TOKEN }}"
+```
+
+Make sure to replace `deploy.example.com` with the URL of your Docker Deploy API instance.
+
+## Complete Example
+
+This is a full example of a workflow file that builds a Docker image, pushes it to Docker Hub and deploys it using the Docker Deploy API.
+
+```yaml
+name: Build Docker image
+on:
+    push:
+        branches:
+            - 'main'
+        tags:
+            - 'v*'
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        timeout-minutes: 15
+        steps:
+            - uses: actions/checkout@v3
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 20.x
+                  cache: 'npm'
+            - name: Install dependencies
+              run: npm ci
+            - name: Build
+              run: npm run build
+            - name: Set up QEMU
+              uses: docker/setup-qemu-action@v2
+            - name: Set up Docker Buildx
+              uses: docker/setup-buildx-action@v2
+            - name: Login to Docker Hub
+              uses: docker/login-action@v2
+              with:
+                  username: ${{ secrets.DOCKER_HUB_USERNAME }}
+                  password: ${{ secrets.DOCKER_HUB_PASSWORD }}
+            - name: Extract metadata (tags, labels) for Docker
+              id: meta
+              uses: docker/metadata-action@v4
+              with:
+                  images: timokoessler/docker-deploy-api
+            - name: Build and push Docker image
+              uses: docker/build-push-action@v4
+              with:
+                  push: true
+                  platforms: linux/amd64,linux/arm64
+                  context: .
+                  tags: ${{ steps.meta.outputs.tags }}
+                  labels: ${{ steps.meta.outputs.labels }}
+            - name: Deploy 🚀
+              run: curl -sSL "https://deploy.example.com/s" | bash -s -- "${{ secrets.DEPLOY_TOKEN }}"
+```

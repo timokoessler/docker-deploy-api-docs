@@ -1,0 +1,65 @@
+---
+title: Generate Deploy Token
+---
+
+A deploy token is a unique string that is used for authenticating and for storing the deploy information. It can be generated using the CLI tool,
+
+## Steps to generate a deploy token
+
+To open the token generation wizard, run the following command in the directory of your server where the `docker-compose.yml` file of this project is located.
+
+```bash
+docker compose exec -it docker-deploy-api cli
+```
+
+The wizard tries to connect to the Docker daemon and fetches a list of all containers running on the server.
+If the connection is successful, you will see a list of containers with their names and IDs.
+Select the containers you want to deploy by pressing space and press enter to continue.
+
+```bash
+Docker Deploy CLI by Timo Kössler
+✔ Connected to Docker socket
+✔ Found 1 container
+? Select one or multiple containers for which you want to generate a deploy token by pressing space. Press enter when done ...
+√ container_name
+```
+
+After selecting the container(s), you will be asked if the deploy token should expire after a certain time. If you select yes, you will be asked to enter the lifetime of the token.
+
+In the next step, you will be asked to select the action to perform when deploying the container(s). You can choose between the following options:
+- Pull and recreate: Pulls the latest image and recreates the container.
+- Recreate: Recreates the container without pulling the latest image.
+- Restart: Restarts the container.
+
+The last step is to decide whether the old image should be removed after pulling a new one, if the action is "Pull and recreate".
+
+You successfully generated a deploy token 🥳. The token will be printed to the console and you can copy it to your clipboard.
+
+## Technical Details
+The deploy tokens are generated using <a href="https://github.com/panva/paseto" target="_blank">PASETO</a> (Platform-Agnostic Security Tokens) which is a specification for secure stateless tokens.
+The payload is signed using the secret key. While writing this documentation, the token contains the following information:
+
+```ts
+/**
+ * Action to perform when deploying a container.
+ */
+export enum DeployTokenAction {
+    PULL_AND_RECREATE = 0,
+    RECREATE = 1,
+    RESTART = 2,
+}
+export type DeployToken = {
+    /**
+     * List of container names to deploy.
+     */
+    containerNames: string[];
+    /**
+     * Action to perform.
+     */
+    action: DeployTokenAction;
+    /**
+     * Whether to remove the old image after pulling the new one.
+     */
+    cleanup: boolean;
+};
+```

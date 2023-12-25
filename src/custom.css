@@ -39,6 +39,10 @@
     border-radius: 0.5rem;
 }
 
+code {
+	border-radius: 0.25rem;
+}
+
 article.card {
     border-radius: 0.5rem;
     box-shadow: var(--sl-shadow-md);
@@ -76,4 +80,32 @@ a.decent:hover {
 	background-color: transparent;
 	-webkit-backdrop-filter: blur(16px);
 	backdrop-filter: blur(16px);
+}
+
+/** Better table styling */
+
+.sl-markdown-content table {
+	border-radius: 0.5rem;
+    box-shadow: var(--sl-shadow-md);
+	border: 1px solid var(--sl-color-gray-6);
+	width: max-content;
+	max-width: 100%;
+}
+
+.sl-markdown-content table td:first-child,
+.sl-markdown-content table th:first-child {
+	border-left: none;
+}
+
+.sl-markdown-content table td:last-child,
+.sl-markdown-content table th:last-child {
+	border-right: none;
+}
+
+.sl-markdown-content table tr:first-child th {
+	border-top: none;
+}
+
+.sl-markdown-content table tr:last-child td {
+	border-bottom: none;
 }

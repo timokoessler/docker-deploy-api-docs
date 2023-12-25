@@ -12,6 +12,10 @@ The following instructions assume that you have already installed Docker and Doc
 If not, please refer to the <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener noreferrer">official documentation</a> for more information.
 :::
 
+:::danger
+This software is still a work in progress and not released yet.
+:::
+
 ## Get docker-compose.yml
 
 First, create a new directory for the application and download the latest `docker-compose.yml` file from the repository.
@@ -40,8 +44,8 @@ Open the `docker-compose.yml` file in your favorite editor and adjust the follow
 -        - '127.0.0.1:8080:3000'
 +        - '127.0.0.1:8081:3000' # Change to a non public unused port
     environment:
--       - URL=http://127.0.0.1:8080 # Public url of the api
-+       - URL=https://deploy.example.com # Your public url
+-        - URL=http://127.0.0.1:8080 # Public url of the api
++        - URL=https://deploy.example.com # Your public url
         - PORT=3000 # The port the api is listening on (inside the container)
 ...
 ```
@@ -50,7 +54,7 @@ Change the `URL` to the public url of your application and modify the `ports` se
 You can also use Docker networks to communicate with the container from other containers.
 
 :::tip
-You can find all available configuration options on the configuration page.
+You can find all available configuration options on the [configuration page](/advanced/configuration).
 :::
 
 ## Configure the reverse proxy
@@ -72,3 +76,8 @@ docker compose logs -f
 
 If you open the url of your application in your browser, you should see a welcome page.
 Congratulations, you have successfully installed the application! 🎉
+
+## Next steps
+
+- If you want to pull images from a private registry, you can find more information on the page [Private Registry](/advanced/private-registry).
+- You can find all available configuration options on the page [Configuration](/advanced/configuration).
