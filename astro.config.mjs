@@ -7,7 +7,7 @@ export default defineConfig({
 	integrations: [
 		starlight({
 			title: 'Docker Deploy API',
-			favicon: './public/favicon.svg',
+			favicon: '/favicon.svg',
 			logo: {
 				src: './src/assets/spouting_whale_flat.svg',
 				replacesTitle: false

@@ -1,0 +1,16 @@
+---
+title: PowerShell Script
+---
+
+Every instance of the Docker Deploy API hosts a PowerShell script that can be used for easy deployment on Windows. The script is available at `https://deploy.example.com/pwsh`.
+## Usage
+
+Replace `deploy.example.com` with the URL of your instance and `DEPLOY_TOKEN` with your deploy token.
+
+```powershell "deploy.example.com" "DEPLOY_TOKEN"
+& ([scriptblock]::Create((irm https://deploy.example.com/pwsh))) DEPLOY_TOKEN
+```
+
+:::caution
+Some antivirus software may block the execution of the above command. If you encounter this issue, you can download the script on your own and execute it locally.
+:::
