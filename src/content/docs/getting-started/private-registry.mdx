@@ -1,0 +1,48 @@
+---
+title: Private Registry Authentication
+sidebar:
+  order: 5
+---
+
+Pulling images from a private container registry is a bit more complicated than pulling from a public registry, because the authentication information must be provided.
+There are two ways to do this:
+
+## Docker Config
+
+By default the Docker Container will mount the `~/.docker/config.json` file into the container.
+If that file contains the authentication information for the registry, the container will be able to pull images from the registry.
+
+:::caution
+This is normally not working with Docker Desktop, because the credentials are stored in an external credential store.
+:::
+
+```yaml title="docker-compose.yml"
+...
+volumes:
+  - '~/.docker/config.json:/home/node/.docker/config.json:ro'
+...
+```
+
+If you start the container with a mounted `config.json` file and an external credential store is used, a warning will be displayed in the logs.
+
+## Add credentials via CLI
+
+It is also possible to add login data for a registry via the CLI. It is stored in a file called `registry-auth.json` in data volume of the container.
+
+To open the CLI, run the following command in the directory of your server where the `docker-compose.yml` file of this project is located.
+
+```bash
+docker compose exec -it docker-deploy-api cli
+```
+Then select the option "Add registry login data and press enter. After that you will be asked for the registry URL, username and password.
+
+```bash
+🐳 Docker Deploy CLI by Timo Kössler
+√ What do you want to do? · Add registry login data
+✔ Loaded auth data
+√ Do you want to add login data for Docker Hub or for another container registry? · Other registry / Docker Hub
+√ Please enter the host or url of the container registry you want to add · registry.example.com
+√ Please enter the username that should be used for logging in · docker
+√ Please enter the password · **************
+✔ Successfully saved login data
+```

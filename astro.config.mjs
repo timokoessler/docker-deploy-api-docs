@@ -1,9 +1,10 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import robotsTxt from 'astro-robots-txt';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://deploy-api-docs.tkoessler.de',
+	site: 'https://deploy-api.tkoessler.de',
 	integrations: [
 		starlight({
 			title: 'Docker Deploy API',
@@ -40,5 +41,6 @@ export default defineConfig({
             },
 			customCss: ['./src/custom.css']
 		}),
+		robotsTxt(),
 	],
 });
