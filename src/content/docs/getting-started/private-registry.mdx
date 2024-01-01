@@ -29,10 +29,10 @@ If you start the container with a mounted `config.json` file and an external cre
 
 It is also possible to add login data for a registry via the CLI. It is stored in a file called `registry-auth.json` in data volume of the container.
 
-To open the CLI, run the following command in the directory of your server where the `docker-compose.yml` file of this project is located.
+To open the CLI, run the following command:
 
 ```bash
-docker compose exec -it docker-deploy-api cli
+docker exec -it docker-deploy-api cli
 ```
 Then select the option "Add registry login data and press enter. After that you will be asked for the registry URL, username and password.
 

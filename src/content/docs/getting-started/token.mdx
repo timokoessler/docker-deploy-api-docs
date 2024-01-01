@@ -8,10 +8,10 @@ A deploy token is a unique string that is used for authenticating and for storin
 
 ## Steps to generate a deploy token
 
-To open the CLI, run the following command in the directory of your server where the `docker-compose.yml` file of this project is located.
+To open the CLI, run the following command:
 
 ```bash
-docker compose exec -it docker-deploy-api cli
+docker exec -it docker-deploy-api cli
 ```
 Then select the option "Generate a Deploy Token" and press enter.
 After that the wizard tries to connect to the Docker daemon and fetches a list of all containers running on the server.
