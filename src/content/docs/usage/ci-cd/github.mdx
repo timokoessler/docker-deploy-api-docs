@@ -24,7 +24,7 @@ You need to be a collaborator or owner of the repository to do this.
 
 Edit your workflow file (e.g. `.github/workflows/deploy.yml`) and add the following content:
 
-```yaml "\"https://deploy.example.com/s\""
+```yaml "deploy.example.com"
 steps:
   - name: Deploy 🚀
     run: curl -sSL "https://deploy.example.com/s" | bash -s -- "${{ secrets.DEPLOY_TOKEN }}"
