@@ -1,5 +1,35 @@
 ---
 title: GitLab CI/CD
-sidebar:
-  badge: To-DO
 ---
+
+You can use GitLab CI/CD to automate the deployment of Docker containers with Docker Deploy API.
+
+:::note[Requirements]
+The following instructions assume that you have already generated a [Deploy Token](/getting-started/token).
+:::
+
+## Save Secret
+
+First, you need to save the Deploy Token as a secret in your repository.
+You need to be a collaborator or owner of the repository to do this.
+
+1. Go to your repository on GitHub.
+2. Click **Settings**.
+3. Click **CI/CD**.
+4. Scroll down to **Variables** and click **Expand**.
+5. Click **Add variable**.
+6. Enter `DEPLOY_TOKEN` as the **Key**. The **Value** is the Deploy Token you generated.
+7. Make sure to check **Mask variable** and **Protect variable**.
+8. Click **Add variable**.
+
+## Edit .gitlab-ci.yml
+
+Add the following to your `.gitlab-ci.yml` file.
+
+```yaml title=".gitlab-ci.yml" "deploy.example.com"
+deploy:
+  stage: deploy
+  script:
+    - curl -sSL "https://deploy.example.com/s" | bash -s -- $DEPLOY_TOKEN
+  # environment: ...
+```
