@@ -1,5 +1,31 @@
 ---
 title: Revoke Deploy Token
-sidebar:
-  badge: To-Do
 ---
+
+If a deploy token is compromised or you don't need it anymore, you can revoke it. This will make the token invalid and it can't be used anymore to deploy containers.
+
+## Steps to revoke a deploy token
+
+To open the CLI, run the following command:
+
+```bash
+docker exec -it docker-deploy-api cli
+```
+Then select the option "Revoke a Deploy Toke" and press enter.
+After that the wizard asks you to paste the deploy token you want to revoke.
+If the token is valid, not expired and not already revoked, it will be revoked and you will get a success message.
+After that you need to restart the Docker Deploy API container for this to take effect.
+
+```bash
+🐳 Docker Deploy CLI by Timo Kössler
+√ What do you want to do? · Revoke a Deploy Token
+√ Please paste or enter the token you want to revoke · v4.public.abcdefghijklmnopqrstuvwxyz1234567890
+✔ Token successfully revoked. You need to restart the Docker Deploy API container for this to take effect
+```
+:::tip
+You can revoke all issued tokens by deleting the file `key.pem` in the `/data` directory. After that you need to restart the Docker Deploy API container to generate a new key pair.
+:::
+
+## Technical Details
+
+The Docker Deploy API stores a `sha512` hash of the revoked tokens in a file called `revoked-tokens.json` in the `/data` directory.
