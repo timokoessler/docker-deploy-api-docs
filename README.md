@@ -2,7 +2,9 @@
 
 Documentation for the [Docker Deploy API](https://github.com/timokoessler/docker-deploy-api), an easy-to-use API for deploying Docker containers to a server.
 
-Work in progress. Build with Astro Starlight 🌟.
+For more information, visit the [documentation website](https://deploy-api.tkoessler.de).
+
+[![Built with Astro](https://astro.badg.es/v2/built-with-astro/small.svg)](https://astro.build)
 
 ## Contact
 
@@ -15,4 +17,4 @@ If a public GitHub issue or discussion is not the right choice for your concern,
 © Timo Kössler 2024
 Released under the [MIT license](https://github.com/timokoessler/docker-deploy-api-docs/blob/main/LICENSE)
 
-<sub><sup>Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein.The whale logo is licensed under the MIT license - © Microsoft Corporation (fluentui-emoji).</sup></sub>
+<sub><sup>Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries. Docker, Inc. and other parties may also have trademark rights in other terms used herein. The whale logo is licensed under the MIT license - © Microsoft Corporation (fluentui-emoji).</sup></sub>
