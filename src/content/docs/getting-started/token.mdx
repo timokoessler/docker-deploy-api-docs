@@ -38,6 +38,10 @@ The last step is to decide whether the old image should be removed after pulling
 
 You successfully generated a deploy token 🥳. The token will be printed to the console and you can copy it to your clipboard.
 
+:::note
+If you are using Docker Compose, changes to the `docker-compose.yml` files are not automatically applied when recreating the container with this api. You have to run `docker-compose up -d` manually.
+:::
+
 ## Technical Details
 The deploy tokens are generated using <a href="https://github.com/panva/paseto" target="_blank">PASETO</a> (Platform-Agnostic Security Tokens) which is a specification for secure stateless tokens.
 The payload is signed using the secret key. While writing this documentation, the token contains the following information:
