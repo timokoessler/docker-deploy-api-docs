@@ -73,4 +73,22 @@ server {
 }
 ```
 </TabItem>
+
+<TabItem label="traefik">
+The following example configuration assumes that an https entry point is set up.
+
+```yaml title="compose.yml"
+services:
+    docker-deploy-api:
+        ...
+        labels:
+          - "traefik.enable=true"
+          - "traefik.http.routers.deploy-api.rule=Host(`deploy.example.com`)"
+          - "traefik.http.routers.deploy-api.entrypoints=https"
+          - "traefik.http.routers.deploy-api.tls=true"
+          - "traefik.http.services.deploy-api.loadbalancer.server.port=3000"
+        ...
+
+```
+</TabItem>
 </Tabs>
