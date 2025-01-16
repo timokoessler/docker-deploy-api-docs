@@ -10,7 +10,7 @@ For more information, visit the [documentation website](https://deploy-api.tkoes
 
 If a public GitHub issue or discussion is not the right choice for your concern, you can contact me directly:
 
--   E-Mail: [info@timokoessler.de](mailto:info@timokoessler.de)
+- E-Mail: [info@timokoessler.de](mailto:info@timokoessler.de)
 
 ## License
 

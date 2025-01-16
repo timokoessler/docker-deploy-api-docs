@@ -3,17 +3,17 @@ title: Docker Deploy API
 description: Get started building your docs site with Starlight.
 template: splash
 hero:
-  tagline: An easy-to-use API for deploying Docker containers to a server.
-  image:
-    file: ../../assets/spouting_whale_flat.svg
-  actions:
-    - text: Getting Started
-      link: /getting-started/intro
-      icon: right-arrow
-      variant: primary
-    - text: Source Code on GitHub
-      link: https://github.com/timokoessler/docker-deploy-api
-      icon: external
+    tagline: An easy-to-use API for deploying Docker containers to a server.
+    image:
+        file: ../../assets/spouting_whale_flat.svg
+    actions:
+        - text: Getting Started
+          link: /getting-started/intro
+          icon: right-arrow
+          variant: primary
+        - text: Source Code on GitHub
+          link: https://github.com/timokoessler/docker-deploy-api
+          icon: external
 editUrl: false
 lastUpdated: false
 ---
@@ -21,28 +21,47 @@ lastUpdated: false
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <CardGrid stagger>
-	<Card title="Introduction" icon="information">
-		What is Docker Deploy API and how does it work?<br />
-		<a href="/getting-started/intro">Read the intro</a>
-	</Card>
-	<Card title="Installation" icon="forward-slash">
-		How to install Docker Deploy API on your server?<br />
-		<a href="/getting-started/install">Read the installation guide</a>
-	</Card>
-	<Card title="Usage with GitHub Actions" icon="github">
-		How to use Docker Deploy API with GitHub Actions?<br />
-		<a href="/usage/ci-cd/github">Read the GitHub Actions guide</a>
-	</Card>
-	<Card title="Configuration" icon="setting">
-		What can be configured?<br />
-		<a href="/advanced/config">Read the configuration guide</a>
-	</Card>
+    <Card title="Introduction" icon="information">
+        What is Docker Deploy API and how does it work?
+        <br />
+        <a href="/getting-started/intro">Read the intro</a>
+    </Card>
+    <Card title="Installation" icon="forward-slash">
+        How to install Docker Deploy API on your server?
+        <br />
+        <a href="/getting-started/install">Read the installation guide</a>
+    </Card>
+    <Card title="Usage with GitHub Actions" icon="github">
+        How to use Docker Deploy API with GitHub Actions?
+        <br />
+        <a href="/usage/ci-cd/github">Read the GitHub Actions guide</a>
+    </Card>
+    <Card title="Configuration" icon="setting">
+        What can be configured?
+        <br />
+        <a href="/advanced/config">Read the configuration guide</a>
+    </Card>
 </CardGrid>
 
-<div class="legal">Docker and the Docker logo are trademarks or registered trademarks of Docker, Inc. in the United States and/or other countries.
-Docker, Inc. and other parties may also have trademark rights in other terms used herein.
-The whale logo is licensed under the MIT license - © Microsoft Corporation (fluentui-emoji).</div>
+<div class="legal">
+    Docker and the Docker logo are trademarks or registered trademarks of
+    Docker, Inc. in the United States and/or other countries. Docker, Inc. and
+    other parties may also have trademark rights in other terms used herein. The
+    whale logo is licensed under the MIT license - © Microsoft Corporation
+    (fluentui-emoji).
+</div>
 
 <div class="footer">
-	Copyright © <a href="https://timokoessler.de" class="decent" target="_blank">Timo Kössler</a> - Build with 🌟 <a href="https://starlight.astro.build" class="decent" target="_blank" rel="noopener noreferrer">Starlight from Astro</a>
+    Copyright ©{' '}
+    <a href="https://timokoessler.de" class="decent" target="_blank">
+        Timo Kössler
+    </a>{' '}
+    - Build with 🌟{' '}
+    <a
+        href="https://starlight.astro.build"
+        class="decent"
+        target="_blank"
+        rel="noopener noreferrer">
+        Starlight from Astro
+    </a>
 </div>

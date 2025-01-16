@@ -1,7 +1,7 @@
 ---
 title: Generate Deploy Token
 sidebar:
-  order: 4
+    order: 4
 ---
 
 A deploy token is a unique string that is used for authenticating and for storing the deploy information. It can be generated using the CLI tool,
@@ -13,6 +13,7 @@ To open the CLI, run the following command:
 ```bash
 docker exec -it docker-deploy-api cli
 ```
+
 Then select the option "Generate a Deploy Token" and press enter.
 After that the wizard tries to connect to the Docker daemon and fetches a list of all containers running on the server.
 If the connection is successful, you will see a list of containers with their names and IDs.
@@ -30,6 +31,7 @@ Select the containers you want to deploy by pressing space and press enter to co
 After selecting the container(s), you will be asked if the deploy token should expire after a certain time. If you select yes, you will be asked to enter the lifetime of the token.
 
 In the next step, you will be asked to select the action to perform when deploying the container(s). You can choose between the following options:
+
 - Pull and recreate: Pulls the latest image and recreates the container.
 - Recreate: Recreates the container without pulling the latest image.
 - Restart: Restarts the container.
@@ -43,6 +45,7 @@ If you are using Docker Compose, changes to the `docker-compose.yml` files are n
 :::
 
 ## Technical Details
+
 The deploy tokens are generated using <a href="https://github.com/panva/paseto" target="_blank">PASETO</a> (Platform-Agnostic Security Tokens) which is a specification for secure stateless tokens.
 The payload is signed using the secret key. While writing this documentation, the token contains the following information:
 

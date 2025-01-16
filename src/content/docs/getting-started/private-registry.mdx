@@ -1,7 +1,7 @@
 ---
 title: Private Registry Authentication
 sidebar:
-  order: 5
+    order: 5
 ---
 
 Pulling images from a private container registry is a bit more complicated than pulling from a public registry, because the authentication information must be provided.
@@ -17,10 +17,10 @@ This is normally not working with Docker Desktop, because the credentials are st
 :::
 
 ```yaml title="docker-compose.yml"
-...
+
+---
 volumes:
-  - '~/.docker/config.json:/home/node/.docker/config.json:ro'
-...
+    - '~/.docker/config.json:/home/node/.docker/config.json:ro'
 ```
 
 If you start the container with a mounted `config.json` file and an external credential store is used, a warning will be displayed in the logs.
@@ -34,6 +34,7 @@ To open the CLI, run the following command:
 ```bash
 docker exec -it docker-deploy-api cli
 ```
+
 Then select the option "Add registry login data and press enter. After that you will be asked for the registry URL, username and password.
 
 ```bash

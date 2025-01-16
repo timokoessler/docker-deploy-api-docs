@@ -1,37 +1,37 @@
 /* Dark mode colors. */
 :root {
-	--sl-color-accent-low: #0b2639;
-	--sl-color-accent: #0070ac;
-	--sl-color-accent-high: #aecde6;
-	--sl-color-white: #ffffff;
-	--sl-color-gray-1: #eceef2;
-	--sl-color-gray-2: #c0c2c7;
-	--sl-color-gray-3: #888b96;
-	--sl-color-gray-4: #545861;
-	--sl-color-gray-5: #353841;
-	--sl-color-gray-6: #24272f;
-	--sl-color-black: #17181c;
-	--overlay-blurple: rgba(50, 161, 234, 0.2);
-	--ec-brdRad: 0.5rem;
-	--ec-frm-edTabBrdRad: 0.5rem;
+    --sl-color-accent-low: #0b2639;
+    --sl-color-accent: #0070ac;
+    --sl-color-accent-high: #aecde6;
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #eceef2;
+    --sl-color-gray-2: #c0c2c7;
+    --sl-color-gray-3: #888b96;
+    --sl-color-gray-4: #545861;
+    --sl-color-gray-5: #353841;
+    --sl-color-gray-6: #24272f;
+    --sl-color-black: #17181c;
+    --overlay-blurple: rgba(50, 161, 234, 0.2);
+    --ec-brdRad: 0.5rem;
+    --ec-frm-edTabBrdRad: 0.5rem;
 }
 /* Light mode colors. */
 :root[data-theme='light'] {
-	--sl-color-accent-low: #c3daed;
-	--sl-color-accent: #0072af;
-	--sl-color-accent-high: #053554;
-	--sl-color-white: #17181c;
-	--sl-color-gray-1: #24272f;
-	--sl-color-gray-2: #353841;
-	--sl-color-gray-3: #545861;
-	--sl-color-gray-4: #888b96;
-	--sl-color-gray-5: #c0c2c7;
-	--sl-color-gray-6: #eceef2;
-	--sl-color-gray-7: #f5f6f8;
-	--sl-color-black: #ffffff;
-	--overlay-blurple: rgba(50, 161, 234, 0.2);
-	--ec-brdRad: 0.5rem;
-	--ec-frm-edTabBrdRad: 0.5rem;
+    --sl-color-accent-low: #c3daed;
+    --sl-color-accent: #0072af;
+    --sl-color-accent-high: #053554;
+    --sl-color-white: #17181c;
+    --sl-color-gray-1: #24272f;
+    --sl-color-gray-2: #353841;
+    --sl-color-gray-3: #545861;
+    --sl-color-gray-4: #888b96;
+    --sl-color-gray-5: #c0c2c7;
+    --sl-color-gray-6: #eceef2;
+    --sl-color-gray-7: #f5f6f8;
+    --sl-color-black: #ffffff;
+    --overlay-blurple: rgba(50, 161, 234, 0.2);
+    --ec-brdRad: 0.5rem;
+    --ec-frm-edTabBrdRad: 0.5rem;
 }
 
 .starlight-aside,
@@ -40,72 +40,73 @@
 }
 
 code {
-	border-radius: 0.25rem;
+    border-radius: 0.25rem;
 }
 
 article.card {
     border-radius: 0.5rem;
     box-shadow: var(--sl-shadow-md);
-	border: 1px solid var(--sl-color-gray-5);
+    border: 1px solid var(--sl-color-gray-5);
 }
 
 .legal {
-	margin-top: 4rem !important;
-	font-size: 12px;
+    margin-top: 4rem !important;
+    font-size: 12px;
 }
 
 .footer {
-	font-size: 14px;
+    font-size: 14px;
 }
 
 a.decent {
-	color: var(--sl-color-white) !important;
-	text-decoration: none !important;
+    color: var(--sl-color-white) !important;
+    text-decoration: none !important;
 }
 
 a.decent:hover {
-	color: var(--sl-color-accent) !important;
+    color: var(--sl-color-accent) !important;
 }
 
 [data-has-hero] .page {
-	background:
-		linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
-		radial-gradient(var(--overlay-blurple), transparent 40%) no-repeat -60vw -40vh / 105vw 200vh,
-		radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50% calc(100% + 20rem) /
-			60rem 30rem;
+    background:
+        linear-gradient(215deg, var(--overlay-blurple), transparent 40%),
+        radial-gradient(var(--overlay-blurple), transparent 40%)
+            no-repeat -60vw -40vh / 105vw 200vh,
+        radial-gradient(var(--overlay-blurple), transparent 65%) no-repeat 50%
+            calc(100% + 20rem) / 60rem 30rem;
 }
 
 [data-has-hero] header {
-	border-bottom: 1px solid transparent;
-	background-color: transparent;
-	-webkit-backdrop-filter: blur(16px);
-	backdrop-filter: blur(16px);
+    border-bottom: 1px solid transparent;
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
 }
 
 /** Better table styling */
 
 .sl-markdown-content table {
-	border-radius: 0.5rem;
+    border-radius: 0.5rem;
     box-shadow: var(--sl-shadow-md);
-	border: 1px solid var(--sl-color-gray-6);
-	width: max-content;
-	max-width: 100%;
+    border: 1px solid var(--sl-color-gray-6);
+    width: max-content;
+    max-width: 100%;
 }
 
 .sl-markdown-content table td:first-child,
 .sl-markdown-content table th:first-child {
-	border-left: none;
+    border-left: none;
 }
 
 .sl-markdown-content table td:last-child,
 .sl-markdown-content table th:last-child {
-	border-right: none;
+    border-right: none;
 }
 
 .sl-markdown-content table tr:first-child th {
-	border-top: none;
+    border-top: none;
 }
 
 .sl-markdown-content table tr:last-child td {
-	border-bottom: none;
+    border-bottom: none;
 }

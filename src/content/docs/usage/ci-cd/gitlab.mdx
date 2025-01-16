@@ -28,8 +28,8 @@ Add the following to your `.gitlab-ci.yml` file.
 
 ```yaml title=".gitlab-ci.yml" "deploy.example.com"
 deploy:
-  stage: deploy
-  script:
-    - curl -sSL "https://deploy.example.com/s" | bash -s -- $DEPLOY_TOKEN
-  # environment: ...
+    stage: deploy
+    script:
+        - curl -sSL "https://deploy.example.com/s" | bash -s -- $DEPLOY_TOKEN
+    # environment: ...
 ```

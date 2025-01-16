@@ -1,8 +1,9 @@
 ---
 title: Reverse Proxy
 sidebar:
-  order: 3
+    order: 3
 ---
+
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 The application is designed to be used behind a reverse proxy like nginx, traefik or apache2, that handles the tls termination and proxies the requests to the application.
@@ -72,6 +73,7 @@ server {
     return      301 https://deploy.example.com$request_uri;
 }
 ```
+
 </TabItem>
 
 <TabItem label="traefik">
@@ -90,5 +92,6 @@ services:
         ...
 
 ```
+
 </TabItem>
 </Tabs>
