@@ -15,9 +15,14 @@ export default defineConfig({
             },
             description:
                 'An easy-to-use API for deploying Docker containers to a server.',
-            social: {
-                github: 'https://github.com/timokoessler/docker-deploy-api',
-            },
+            social: [
+                {
+                    icon: 'github',
+                    label: 'GitHub',
+                    href: 'https://github.com/timokoessler/docker-deploy-api',
+                },
+            ],
+
             defaultLocale: 'en',
             sidebar: [
                 {
