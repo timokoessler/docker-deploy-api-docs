@@ -27,24 +27,24 @@ export default defineConfig({
             sidebar: [
                 {
                     label: 'Getting Started',
-                    autogenerate: { directory: 'getting-started' },
+                    items: [{ autogenerate: { directory: 'getting-started' } }],
                 },
                 {
                     label: 'Usage',
                     items: [
                         {
                             label: 'CI/CD',
-                            autogenerate: { directory: 'usage/ci-cd' },
+                            items: [{ autogenerate: { directory: 'usage/ci-cd' } }],
                         },
                         {
                             label: 'Generic',
-                            autogenerate: { directory: 'usage/generic' },
+                            items: [{ autogenerate: { directory: 'usage/generic' } }],
                         },
                     ],
                 },
                 {
                     label: 'Advanced',
-                    autogenerate: { directory: 'advanced' },
+                    items: [{ autogenerate: { directory: 'advanced' } }],
                 },
             ],
             lastUpdated: true,
