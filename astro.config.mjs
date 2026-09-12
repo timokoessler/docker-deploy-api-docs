@@ -34,11 +34,19 @@ export default defineConfig({
                     items: [
                         {
                             label: 'CI/CD',
-                            items: [{ autogenerate: { directory: 'usage/ci-cd' } }],
+                            items: [
+                                { autogenerate: { directory: 'usage/ci-cd' } },
+                            ],
                         },
                         {
                             label: 'Generic',
-                            items: [{ autogenerate: { directory: 'usage/generic' } }],
+                            items: [
+                                {
+                                    autogenerate: {
+                                        directory: 'usage/generic',
+                                    },
+                                },
+                            ],
                         },
                     ],
                 },
